@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zqy.demo.user_modular.mapper.UserMapper">
+    <select id="getUser" resultType="com.zqy.demo.user_modular.entry.User">
+
+        select * from tm_user;
+
+    </select>
+
+    <select id="getUsernames" resultType="java.lang.String">
+        select u.username from tm_user as u;
+    </select>
+
+    <select id="loadUserByUsername" resultType="com.zqy.demo.user_modular.entry.User" parameterType="java.lang.String">
+        select * from tm_user as u where u.username = #{username};
+    </select>
+
+    <insert id="signUp" parameterType="com.zqy.demo.user_modular.entry.User">
+        insert into tm_user values(#{userId},#{username},#{password},#{userRoleId},#{userCreateDate});
+    </insert>
+
+
+</mapper>
